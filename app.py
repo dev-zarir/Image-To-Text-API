@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from urllib.parse import unquote_plus
+from flask_cors import CORS
 import requests
 
 def img_to_text(base64:str):
@@ -28,6 +29,7 @@ def img_to_text(base64:str):
 
 app=Flask(__name__)
 app.config['SECRET_KEY']='thisismysecretkey'
+CORS(app)
 
 @app.route('/', methods=['POST'])
 def home():
